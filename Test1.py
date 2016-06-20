@@ -2,11 +2,12 @@ import random
 
 
 class Test1:
-    n = 10
-    max_r = [[0, 0], [0, 0], [0, 0]]
-    max = [0, 0, 0]
-    columns = [[], [], []]
-    columns_match = [['i', 'j'], ['i', 'k'], ['j', 'k']]  # dimension result matching
+    def __init__(self):
+        self.n = 10
+        self.max_coordinate = [[0, 0], [0, 0], [0, 0]]  # current coordinate of max columns
+        self.max = [0, 0, 0]  # current max columns length
+        self.columns = [[], [], []]  # current max columns
+        self.columns_match = [['i', 'j'], ['i', 'k'], ['j', 'k']]  # dimension result matching
 
     # Generate matrix n*n*n
     def generate(self):
@@ -39,7 +40,8 @@ class Test1:
         # Answer generating. answer with column coordinates, column length and column members
         res = []
         for i in range(3):
-            res.append(((self.columns_match[i][0], self.max_r[i][0]), (self.columns_match[i][1], self.max_r[i][1]),
+            res.append(((self.columns_match[i][0], self.max_coordinate[i][0]),
+                        (self.columns_match[i][1], self.max_coordinate[i][1]),
                         self.max[i], self.columns[i]))
         return res
 
@@ -47,8 +49,9 @@ class Test1:
     def check(self, count, column, i, x, y):
         if count > self.max[i]:
             self.max[i] = count
-            self.max_r[i] = [x, y]
+            self.max_coordinate[i] = [x, y]
             self.columns[i] = column
+
 
 # Test
 a = Test1()
