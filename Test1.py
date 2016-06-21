@@ -17,7 +17,7 @@ class Test1:
             for j in range(self.n):
                 matrix3 = []
                 for k in range(self.n):
-                    matrix3.append(random.randint(0, 10))
+                    matrix3.append(random.randint(0, 9))
                 matrix2.append(matrix3)
             matrix1.append(matrix2)
         return matrix1
